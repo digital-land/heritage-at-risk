@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template ">
+  <head>
+    <meta charset="utf-8">
+    <title>Caldon Canal, Stoke-on-Trent | Heritage-at-risk | Digital Land</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0c0c">     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="shortcut icon" sizes="48x48" href="/images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" sizes="32x32" href="/images/favicon-32x32.png" type="image/png">
+<link rel="shortcut icon" sizes="16x16" href="/images/favicon-16x16.png" type="image/png">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+	<meta name="digital-land:template" content="page-per-thing/record.html"><!-- should make this optional, no need to load if not showing a map -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+crossorigin="" />
+
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+	integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+	crossorigin=""></script>
+
+<!-- assets needed for fullscreen maps -->
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+
+<!-- script needed for recentring map -->
+<script src="https://digital-land.github.io/javascripts/Leaflet.recentre.js"></script>
+
+<script src="https://digital-land.github.io/javascripts/dl-maps.js"></script>	<link href="https://digital-land.github.io/stylesheets/dl-frontend.css" rel="stylesheet" />    <meta property="og:image" content="/images/govuk-opengraph-image.png">
+  </head>
+  <body class="govuk-template__body ">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+      <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
+
+<!-- Cookie banner partial version 1.0.1 -->
+<div id="global-cookie-message" class="govuk-clearfix global-cookie-message" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet="">
+
+  <div id="cookie-banner" class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="cookie-banner__message govuk-!-margin-top-6">
+          <h2 class="govuk-heading-m">Tell us whether you accept cookies</h2>
+          <p class="govuk-body">We use <a class="govuk-link" href="/cookies">cookies to collect information</a> about how you use the Digital Land website to make the website work as well as possible.</p>
+        </div>
+        <div class="cooke-banner__buttons govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            <button class="govuk-button" onclick="acceptCookies();showCookieConfirmation();">Accept all cookies</button>
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <a class="govuk-button" href="/cookies">Set cookie preferences</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cookie-confirmation" class="govuk-width-container govuk-!-padding-top-6" tabindex="-1" style="display: none;">
+    <p class="cookie-banner__confirmation-message govuk-body">You’ve accepted all cookies. You can <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.</p>
+    <button class="cookie-banner__hide-button govuk-button govuk-button--secondary" onclick="document.getElementById('cookie-confirmation').style.display='none';">Hide</button>
+  </div>
+
+</div><header role="banner" id="global-header" class="govuk-header  with-proposition dl-header" data-module="govuk-header">
+  <div class="govuk-header__container govuk-width-container">
+    <div class="header-proposition">
+      <div class="govuk-header__content">
+        <a href="https://digital-land.github.io/" class="govuk-header__link govuk-header__link--service-name">
+        Digital Land
+        </a>
+        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>        <nav>
+          <ul id="navigation" class="govuk-header__navigation" aria-label="Top Level Navigation">
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="/about">Team</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="/project/">Projects</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="/weeknote/">Weeknotes</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="/blog-post/">Blog</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="/guidance/">Guidance</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="/dataset/">Datasets</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="/organisation/">Organisations</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="/map/">Map</a>
+            </li>
+          </ul>
+        </nav>
+</div>
+    </div>
+  </div>
+</header>
+
+      <div class="govuk-width-container ">
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">
+  prototype
+</strong><span class="govuk-phase-banner__text">
+      This is a prototype. Please provide feedback to the Digital Land team.
+    </span>
+  </p>
+</div><div class="govuk-breadcrumbs ">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/">Digital Land</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="../../">Heritage At Risk</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="../">Heritage At Risk</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">heritage-at-risk:7527</li>
+  </ol>
+</div>        <main class="govuk-main-wrapper " id="main-content" role="main">
+
+<span class="govuk-caption-xl">Heritage at risk</span>
+    <h1 class="govuk-heading-xl">Caldon Canal, Stoke-on-Trent</h1>
+<div class="govuk-tabs" data-module="dlf-subnav">
+    <h2 class="govuk-tabs__title">
+      Contents
+    </h2>
+    <nav class="dlf-subnav" aria-label="Sub navigation">
+        <ul class="dlf-subnav__list">
+            <li class="dlf-subnav__list-item dlf-subnav__list-item--selected">
+                <a class="dlf-subnav__list-item__link" href="#record" data-module-sub-nav="tab">
+                Record
+                </a>
+            </li>
+            <li class="dlf-subnav__list-item">
+                <a class="dlf-subnav__list-item__link" href="#history" data-module-sub-nav="tab">
+                History
+                </a>
+            </li><li class="dlf-subnav__list-item">
+                <a class="dlf-subnav__list-item__link" href="#referenced-by" data-module-sub-nav="tab">
+                0 References
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+<div id="record">
+<div class="govuk-grid-row">    <div class="govuk-grid-column-two-thirds"><article class="data-record govuk-!-margin-bottom-6">
+    <h4 class="govuk-heading-s data-record__identifier">#/heritage-at-risk/heritage-at-risk/7527</h4>
+    <dl class="govuk-summary-list data-record__properties">            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">documentation-url
+            </dt>
+            <dd class="govuk-summary-list__value">                <a class="govuk-link" href="https://historicengland.org.uk/advice/heritage-at-risk/search-register/list-entry/4638">https://historicengland.org.uk/advice/heritage-at-risk/search-register/list-entry/4638</a>            </dd>
+        </div>        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">geography
+            </dt>
+            <dd class="govuk-summary-list__value">                heritage-at-risk:7527            </dd>
+        </div>        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">name
+            </dt>
+            <dd class="govuk-summary-list__value">                Caldon Canal, Stoke-on-Trent            </dd>
+        </div>        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">entry-date
+            </dt>
+            <dd class="govuk-summary-list__value">                2021-05-27            </dd>
+        </div>    
+    </dl></article>
+</div>
+            
+</div>
+
+    <h2 class="govuk-heading-m">Geographical area</h2>
+
+    <div class="dl-map__wrapper"><div 
+    class="dl-map govuk-!-margin-top-4"
+    id="dlMap"
+    data-module="boundary-map"
+    style="height: 460px;" data-geojson-urls="geometry.geojson"   
+>
+    <noscript>To view this map, you need to enable JavaScript.</noscript>
+</div>
+    </div>
+
+    <div class="govuk-!-margin-top-2 govuk-!-margin-bottom-6">
+        <a class="dl-page-action-button" href="geometry.geojson">Download geojson</a>
+    </div>
+<h3 class="govuk-heading-m">Associated information</h3>
+
+<ul class="govuk-list govuk-list--bullet">
+    <li><a href="https://digital-land.github.io/specification/schema/geography/">View the geography schema</a></li></ul>
+
+</div>
+
+<div id="history"><h2 class="govuk-heading-m dlf-subnav__heading">History</h2>
+<div class="data-table__wrapper" data-module="data-table">
+    <div class="data-table-left-shadow with-transition"></div>
+    <div class="wide-table">
+        <table class="data-table">
+    <thead>
+        <tr>
+            <th>entry-date</th>
+            <th>resource</th>
+            <th>line</th>
+            <th>geometry</th>
+            <th>geography</th>
+            <th>name</th>
+            <th>documentation-url</th>
+        </tr>
+    </thead>
+    <tbody>        <tr>
+            <td>2021-05-27</td>
+            <td><a href="https://github.com/digital-land/heritage-at-risk-collection/tree/main/transformed/heritage-at-risk/d2de307baa7879a3cd2a7ef1f19911e4cc5b5be8937bf28124cd089cc2b1f816.csv#L1658">d2de307baa78...</a></td>
+            <td>1657</td>
+                <td class="data-table__notes-cell data-table__cell--min-width-4">
+                    <details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      See WKT
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    MULTIPOLYGON (((-2.150237 53.059934,-2.150314 53.059425,-2.150186 53.059386,-2.150182 53.059349,-2.150331 53.059321,-2.150561 53.057871,-2.150825 53.057172,-2.150884 53.056839,-2.150882 53.056348,-2.150834 53.056036,-2.150705 53.055553,-2.150174 53.054506,-2.149873 53.053759,-2.149722 53.053615,-2.149741 53.053556,-2.149039 53.052724,-2.148933 53.052751,-2.148801 53.052654,-2.148912 53.052613,-2.147523 53.051233,-2.147457 53.051096,-2.147335 53.050322,-2.146945 53.049950,-2.146859 53.049758,-2.146887 53.049580,-2.147053 53.049087,-2.147015 53.048945,-2.146964 53.048945,-2.146903 53.048740,-2.146850 53.048745,-2.146573 53.048122,-2.146564 53.047980,-2.146621 53.047766,-2.146717 53.047614,-2.146978 53.047405,-2.147372 53.047271,-2.147892 53.047238,-2.148301 53.047338,-2.149668 53.047948,-2.149899 53.048026,-2.150180 53.048033,-2.150372 53.047991,-2.151293 53.046981,-2.151303 53.046913,-2.150940 53.045903,-2.150956 53.045670,-2.151038 53.045382,-2.151020 53.045350,-2.151177 53.045012,-2.151397 53.044681,-2.151505 53.044440,-2.151489 53.044310,-2.151150 53.043860,-2.151101 53.043714,-2.151107 53.043605,-2.151171 53.043435,-2.150882 53.043374,-2.151202 53.043370,-2.151260 53.043039,-2.151211 53.042932,-2.150807 53.042477,-2.150490 53.041980,-2.150411 53.041134,-2.150212 53.040779,-2.149524 53.040028,-2.149466 53.039904,-2.149506 53.039337,-2.149468 53.039171,-2.149424 53.039100,-2.149288 53.039027,-2.149263 53.038923,-2.148583 53.038119,-2.148088 53.037724,-2.147990 53.037607,-2.147575 53.036834,-2.147339 53.036501,-2.147105 53.036000,-2.147024 53.035806,-2.146939 53.035386,-2.146692 53.034944,-2.146592 53.034662,-2.146607 53.034401,-2.146843 53.033880,-2.147009 53.033750,-2.147181 53.033689,-2.147186 53.033651,-2.147245 53.033653,-2.147399 53.033575,-2.147484 53.033613,-2.148309 53.033395,-2.148981 53.032965,-2.149159 53.032896,-2.150042 53.032682,-2.150453 53.032494,-2.150610 53.032353,-2.151365 53.031464,-2.151869 53.030642,-2.152350 53.030008,-2.152505 53.029880,-2.152659 53.029802,-2.152959 53.029752,-2.153794 53.029798,-2.154257 53.029926,-2.155095 53.030287,-2.155848 53.030437,-2.156481 53.030470,-2.157006 53.030442,-2.157267 53.030286,-2.157250 53.030213,-2.157325 53.029881,-2.157205 53.029503,-2.157195 53.029118,-2.157297 53.028530,-2.157412 53.028328,-2.157558 53.028166,-2.157268 53.028084,-2.157556 53.027919,-2.157547 53.027749,-2.157475 53.027596,-2.156823 53.026937,-2.156747 53.026597,-2.156796 53.026418,-2.157241 53.025609,-2.157086 53.024501,-2.157130 53.024393,-2.157265 53.024259,-2.157469 53.024139,-2.157589 53.024115,-2.157848 53.023959,-2.157866 53.023909,-2.158480 53.023387,-2.158624 53.023232,-2.158790 53.022792,-2.158910 53.022638,-2.159070 53.022512,-2.159255 53.022433,-2.159459 53.022407,-2.160251 53.022379,-2.160567 53.022312,-2.160650 53.022358,-2.163348 53.022253,-2.164729 53.021976,-2.164717 53.021933,-2.165163 53.021861,-2.165356 53.021832,-2.165388 53.021913,-2.167110 53.021748,-2.167641 53.021655,-2.168068 53.021510,-2.168245 53.021388,-2.168371 53.021207,-2.168049 53.020923,-2.168478 53.020739,-2.168495 53.020204,-2.167860 53.019830,-2.167645 53.019972,-2.167487 53.019887,-2.167273 53.019711,-2.167489 53.019611,-2.167002 53.019157,-2.167318 53.019085,-2.166987 53.018539,-2.167626 53.018394,-2.167758 53.018591,-2.168622 53.018373,-2.168523 53.018207,-2.168756 53.018147,-2.168860 53.018322,-2.169154 53.018217,-2.169506 53.018023,-2.170107 53.017626,-2.170295 53.017592,-2.170655 53.018301,-2.170933 53.018112,-2.171832 53.017669,-2.171855 53.017610,-2.171823 53.017477,-2.171691 53.017359,-2.171238 53.017165,-2.171026 53.017213,-2.170966 53.017099,-2.171061 53.017077,-2.170915 53.016895,-2.170604 53.015989,-2.170567 53.015820,-2.170592 53.015688,-2.170801 53.015360,-2.171355 53.014708,-2.172279 53.014324,-2.172876 53.014147,-2.173698 53.014149,-2.174789 53.014228,-2.175466 53.014308,-2.177053 53.014621,-2.177551 53.014775,-2.178182 53.015093,-2.178608 53.015249,-2.179362 53.015432,-2.179539 53.015436,-2.181540 53.015184,-2.181947 53.015200,-2.184189 53.015429,-2.184159 53.015327,-2.184562 53.015284,-2.184536 53.015203,-2.184804 53.015173,-2.184816 53.015233,-2.184704 53.015244,-2.184780 53.015510,-2.187113 53.015844,-2.187296 53.015919,-2.187532 53.016111,-2.187992 53.016005,-2.188343 53.016247,-2.188408 53.016358,-2.187880 53.016495,-2.187954 53.016609,-2.188053 53.016687,-2.188274 53.016795,-2.188544 53.016889,-2.189457 53.016685,-2.190029 53.017572,-2.189867 53.017621,-2.189850 53.017692,-2.189794 53.017729,-2.189840 53.017762,-2.190155 53.017619,-2.190310 53.017605,-2.190526 53.017705,-2.190934 53.018093,-2.190899 53.018186,-2.191020 53.018281,-2.191189 53.018198,-2.192010 53.018379,-2.191898 53.018867,-2.191665 53.018941,-2.191705 53.018996,-2.191515 53.019055,-2.192039 53.018904,-2.192258 53.018803,-2.192260 53.018569,-2.192281 53.018536,-2.192370 53.018561,-2.192410 53.018607,-2.192360 53.018624,-2.192400 53.018669,-2.192450 53.018655,-2.192631 53.018876,-2.192500 53.018914,-2.192680 53.018993,-2.193143 53.019300,-2.192781 53.019247,-2.192800 53.019200,-2.192475 53.019165,-2.192463 53.019218,-2.192986 53.019450,-2.193606 53.019777,-2.193635 53.019757,-2.193782 53.019833,-2.193754 53.019857,-2.193972 53.020132,-2.193335 53.019767,-2.193294 53.019697,-2.193198 53.019691,-2.192981 53.019578,-2.192791 53.019540,-2.192387 53.019531,-2.192004 53.019584,-2.191980 53.019539,-2.192298 53.019483,-2.192394 53.019397,-2.192195 53.019345,-2.191933 53.019349,-2.191473 53.019442,-2.191136 53.019722,-2.190954 53.019736,-2.190844 53.019687,-2.190703 53.019759,-2.190542 53.019959,-2.190451 53.019971,-2.190305 53.019797,-2.190832 53.019613,-2.190820 53.019544,-2.190773 53.019597,-2.190741 53.019587,-2.190800 53.019518,-2.189737 53.018772,-2.189636 53.018657,-2.189536 53.018495,-2.189491 53.018268,-2.189568 53.017938,-2.189674 53.017747,-2.189486 53.017820,-2.189475 53.017712,-2.189352 53.017358,-2.189240 53.017300,-2.187968 53.016907,-2.187769 53.016737,-2.187789 53.016601,-2.187692 53.016637,-2.187649 53.016554,-2.186767 53.016843,-2.186753 53.016672,-2.187176 53.016669,-2.187153 53.016572,-2.187595 53.016486,-2.187470 53.016276,-2.187216 53.016335,-2.187085 53.016152,-2.187290 53.016069,-2.187165 53.015975,-2.186891 53.015882,-2.186746 53.015891,-2.185579 53.015744,-2.184423 53.015547,-2.184463 53.015744,-2.183817 53.015696,-2.183835 53.015542,-2.182881 53.015449,-2.182887 53.015415,-2.182098 53.015316,-2.181601 53.015298,-2.181658 53.015695,-2.182361 53.015747,-2.182357 53.015810,-2.181920 53.015781,-2.181805 53.016554,-2.179415 53.016396,-2.179586 53.015567,-2.179322 53.015583,-2.178536 53.015387,-2.178558 53.015345,-2.177945 53.015165,-2.177289 53.014823,-2.175696 53.014476,-2.175491 53.014394,-2.174933 53.014383,-2.174313 53.014317,-2.174068 53.014262,-2.172923 53.014263,-2.172932 53.014281,-2.172749 53.014285,-2.171451 53.014792,-2.170856 53.015538,-2.170773 53.015744,-2.170833 53.016175,-2.171104 53.016858,-2.171391 53.017059,-2.171657 53.017114,-2.171969 53.017245,-2.172086 53.017363,-2.172121 53.017350,-2.172198 53.017424,-2.172164 53.017436,-2.172312 53.017545,-2.172301 53.017585,-2.172156 53.017618,-2.171961 53.017807,-2.171318 53.018065,-2.170859 53.018324,-2.170726 53.018430,-2.171380 53.019773,-2.171119 53.019844,-2.170528 53.019491,-2.169815 53.019876,-2.169215 53.020271,-2.168943 53.020305,-2.168663 53.020272,-2.168685 53.020826,-2.168662 53.020997,-2.168757 53.021002,-2.168726 53.021297,-2.168801 53.021352,-2.168463 53.021495,-2.168483 53.021511,-2.168353 53.021576,-2.168376 53.021595,-2.168207 53.021683,-2.167821 53.021807,-2.167777 53.021757,-2.167040 53.021856,-2.167372 53.022032,-2.167609 53.022107,-2.167629 53.022145,-2.166778 53.022363,-2.166671 53.022201,-2.167029 53.022108,-2.167081 53.022184,-2.167451 53.022096,-2.167001 53.021863,-2.166626 53.021913,-2.166648 53.021980,-2.165930 53.022055,-2.165672 53.022065,-2.165664 53.021993,-2.164770 53.022093,-2.163343 53.022366,-2.163503 53.022611,-2.163621 53.022720,-2.164050 53.022627,-2.164205 53.022889,-2.164178 53.022900,-2.164313 53.023060,-2.163548 53.023326,-2.163490 53.022890,-2.162939 53.022972,-2.162930 53.022944,-2.162888 53.022955,-2.162747 53.022769,-2.162668 53.022396,-2.160616 53.022500,-2.160354 53.022494,-2.160382 53.022463,-2.159350 53.022574,-2.159135 53.022710,-2.158832 53.023329,-2.158618 53.023547,-2.157673 53.024140,-2.158113 53.024321,-2.157678 53.024810,-2.157697 53.025025,-2.157403 53.025040,-2.157458 53.025232,-2.157624 53.025333,-2.157486 53.025438,-2.157417 53.025697,-2.157013 53.026457,-2.156973 53.026588,-2.156961 53.026700,-2.157000 53.026845,-2.157599 53.027455,-2.157856 53.027614,-2.157954 53.027711,-2.157984 53.027834,-2.157935 53.028013,-2.157746 53.028112,-2.157686 53.028188,-2.157449 53.028643,-2.157366 53.029082,-2.157384 53.029382,-2.157656 53.030161,-2.157458 53.030296,-2.157501 53.030296,-2.157459 53.030355,-2.157428 53.030333,-2.157422 53.030487,-2.157140 53.030596,-2.156898 53.030627,-2.156126 53.030595,-2.155319 53.030477,-2.154813 53.030365,-2.154079 53.030007,-2.153710 53.029931,-2.153150 53.029896,-2.152918 53.029912,-2.152643 53.029977,-2.152109 53.030599,-2.152066 53.030719,-2.152004 53.030974,-2.152270 53.031239,-2.152302 53.031297,-2.152267 53.031362,-2.151895 53.031511,-2.151785 53.031514,-2.151620 53.031457,-2.151133 53.031943,-2.150791 53.032392,-2.150566 53.032580,-2.150211 53.032743,-2.149296 53.032963,-2.149098 53.033038,-2.148877 53.033140,-2.148424 53.033472,-2.148168 53.033562,-2.147581 53.033699,-2.147381 53.033718,-2.147383 53.033747,-2.147126 53.033826,-2.146949 53.034017,-2.146778 53.034481,-2.146784 53.034743,-2.147126 53.035398,-2.147243 53.035897,-2.147459 53.036364,-2.147752 53.036818,-2.148022 53.037341,-2.148191 53.037599,-2.148659 53.037981,-2.149359 53.038778,-2.149392 53.038929,-2.149567 53.039081,-2.149669 53.039269,-2.149692 53.039432,-2.149646 53.039839,-2.149702 53.040006,-2.150383 53.040750,-2.150556 53.040865,-2.150500 53.040874,-2.150593 53.041201,-2.150610 53.041815,-2.150680 53.042004,-2.151078 53.042573,-2.151323 53.042772,-2.151479 53.043026,-2.151461 53.043239,-2.151290 53.043453,-2.151273 53.043692,-2.151311 53.043820,-2.151629 53.044271,-2.151684 53.044471,-2.151637 53.044587,-2.151313 53.045075,-2.151187 53.045335,-2.151207 53.045400,-2.151177 53.045498,-2.151205 53.045520,-2.151149 53.045753,-2.151159 53.045989,-2.151510 53.046902,-2.151404 53.047122,-2.150893 53.047624,-2.150403 53.048183,-2.150765 53.048193,-2.150745 53.048222,-2.150677 53.048214,-2.150571 53.048424,-2.151733 53.048544,-2.153386 53.048542,-2.154273 53.048480,-2.154730 53.048496,-2.155805 53.048685,-2.157272 53.049096,-2.157467 53.049177,-2.157703 53.049407,-2.157542 53.049476,-2.157528 53.049399,-2.157252 53.049238,-2.156579 53.049000,-2.156102 53.048867,-2.154844 53.048609,-2.154105 53.048574,-2.153400 53.048611,-2.151579 53.048617,-2.150403 53.048465,-2.150044 53.048281,-2.149621 53.048012,-2.149495 53.047985,-2.148390 53.047492,-2.148044 53.047380,-2.147808 53.047345,-2.147538 53.047352,-2.147236 53.047409,-2.147100 53.047455,-2.146826 53.047718,-2.146780 53.048120,-2.146801 53.048247,-2.147013 53.048672,-2.147702 53.048527,-2.147844 53.048756,-2.148240 53.048666,-2.148328 53.048711,-2.149019 53.048584,-2.149168 53.048859,-2.148725 53.049010,-2.148502 53.048710,-2.148314 53.048743,-2.148207 53.048703,-2.147206 53.048923,-2.147240 53.048965,-2.147124 53.048937,-2.147186 53.049110,-2.147182 53.049301,-2.147032 53.049614,-2.147030 53.049714,-2.147102 53.049873,-2.147449 53.050220,-2.147595 53.050994,-2.147658 53.051127,-2.147724 53.051138,-2.147670 53.051149,-2.147785 53.051299,-2.148716 53.052201,-2.149046 53.052573,-2.149142 53.052523,-2.149226 53.052624,-2.149111 53.052646,-2.149382 53.052861,-2.149746 53.053331,-2.149818 53.053478,-2.149964 53.053499,-2.149856 53.053521,-2.149963 53.053580,-2.150477 53.054815,-2.150686 53.055151,-2.151082 53.056172,-2.151136 53.056469,-2.151188 53.056501,-2.151196 53.056578,-2.151160 53.056601,-2.151070 53.057143,-2.150879 53.057620,-2.150865 53.057726,-2.150769 53.057863,-2.150656 53.058376,-2.150647 53.058617,-2.150568 53.059051,-2.150514 53.059102,-2.150425 53.059468,-2.150629 53.059495,-2.150557 53.059747,-2.150475 53.059745,-2.150431 53.059952,-2.150440 53.060111,-2.150302 53.060643,-2.149638 53.061452,-2.148870 53.062276,-2.148742 53.062332,-2.148775 53.062372,-2.148700 53.062431,-2.148654 53.062416,-2.148559 53.062539,-2.148283 53.062736,-2.148201 53.062854,-2.148176 53.063106,-2.148284 53.063281,-2.148249 53.063290,-2.148565 53.063668,-2.148985 53.064010,-2.149607 53.064419,-2.149992 53.064614,-2.150316 53.064729,-2.150552 53.064871,-2.150640 53.064997,-2.150640 53.065144,-2.150614 53.065202,-2.150527 53.065255,-2.150405 53.065397,-2.150292 53.065623,-2.150285 53.065871,-2.150382 53.066255,-2.150188 53.066275,-2.150179 53.066247,-2.150127 53.066252,-2.150127 53.066181,-2.150094 53.066181,-2.150088 53.066146,-2.150002 53.066151,-2.149930 53.066010,-2.149847 53.066012,-2.149847 53.065922,-2.150043 53.065917,-2.149941 53.065875,-2.149924 53.065830,-2.150012 53.065817,-2.150009 53.065785,-2.150070 53.065765,-2.150246 53.065750,-2.150257 53.065592,-2.150386 53.065331,-2.150603 53.065152,-2.150577 53.064954,-2.150425 53.064815,-2.149718 53.064513,-2.149200 53.064219,-2.148455 53.063604,-2.148174 53.063307,-2.147797 53.063438,-2.147635 53.063540,-2.146973 53.063747,-2.146916 53.063741,-2.146903 53.063902,-2.146747 53.063857,-2.146717 53.064007,-2.146308 53.064311,-2.146239 53.064621,-2.146162 53.064610,-2.146234 53.064239,-2.146202 53.064100,-2.145814 53.063853,-2.145868 53.063828,-2.145333 53.063398,-2.145004 53.063421,-2.143924 53.063606,-2.143809 53.063663,-2.143660 53.063831,-2.143664 53.063984,-2.143619 53.063995,-2.143548 53.064268,-2.143424 53.064466,-2.142942 53.064870,-2.142843 53.064909,-2.142405 53.064998,-2.140507 53.065195,-2.139386 53.065381,-2.139139 53.065381,-2.139087 53.065283,-2.140452 53.065066,-2.142503 53.064844,-2.142728 53.064782,-2.142993 53.064612,-2.143285 53.064338,-2.143359 53.064208,-2.143469 53.063721,-2.143742 53.063534,-2.144676 53.063345,-2.145579 53.063218,-2.146186 53.063192,-2.146322 53.063234,-2.146326 53.063183,-2.146434 53.063213,-2.147382 53.062944,-2.147905 53.062747,-2.148337 53.062531,-2.148550 53.062352,-2.148529 53.062321,-2.148660 53.062249,-2.148637 53.062100,-2.148710 53.061951,-2.148793 53.061867,-2.148986 53.061909,-2.149446 53.061427,-2.150024 53.060726,-2.150121 53.060504,-2.150237 53.059934)))
+  </div>
+</details>
+                </td>
+                <td>heritage-at-risk:7527</td> 
+                <td>Caldon Canal, Stoke-on-Trent</td> 
+                <td>https://historicengland.org.uk/advice/heritage-at-risk/search-register/list-entry/4638</td> 
+        </tr>    </tbody>
+</table>
+
+    </div>
+    <div class="data-table-right-shadow visible with-transition"></div>
+</div>
+</div><div id="referenced-by">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m dlf-subnav__heading">Referenced by</h2>
+            <p class="govuk-body">This record is referenced by 0 other planning related data records.</p>
+</div>
+    </div>
+</div>
+        </main>
+      </div>
+
+    <div class="dlf-feedback__wrapper">
+    <div class="dlf-feedback">
+    <div class="dlf-feedback__prompt">
+        <div class="dlf-feedback__prompt-content">
+            <span class="dlf-feedback__prompt-content__text">Spotted an issue? Let us know so we can improve the data.</span>
+        </div>
+        <div class="dlf-feedback__prompt-action">
+            <a href="mailto:digitalLand@communities.gov.uk?subject=Feedback on (geography) Caldon Canal, Stoke-on-Trent -- heritage-at-risk" class="govuk-button dlf-feedback__prompt__link">There is something wrong with the data</a>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<footer class="govuk-footer " role="contentinfo"
+>
+  <div class="govuk-width-container ">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+          <h2 class="govuk-visually-hidden">Support links</h2>              <ul class="govuk-footer__inline-list">
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="/cookies">
+                      Cookies
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="/accessibility-statement">
+                      Accessibility statement
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="/design-system">
+                      Design system
+                    </a>
+                  </li>
+              </ul>
+            <div class="govuk-footer__meta-custom">
+              The <a class="govuk-footer__link" href="https://github.com/digital-land/digital-land/">software</a> and <a class="govuk-footer__link" href="https://github.com/digital-land/digital-land/">data</a> used to build these pages is <a class="govuk-footer__link" href="https://github.com/digital-land/digital-land/blob/master/LICENSE">open source</a>.
+            </div>
+        <svg
+          role="presentation"
+          focusable="false"
+          class="govuk-footer__licence-logo"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 483.2 195.7"
+          height="17"
+          width="41"
+        >
+          <path
+            fill="currentColor"
+            d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
+          />
+        </svg>
+        <span class="govuk-footer__licence-description">
+          All content is available under the
+          <a
+            class="govuk-footer__link"
+            href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+            rel="license"
+          >Open Government Licence v3.0</a>, except where otherwise stated
+        </span>
+      </div>
+      <div class="govuk-footer__meta-item">
+        <a
+          class="govuk-footer__link govuk-footer__copyright-logo"
+          href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
+        >© Crown copyright</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://digital-land.github.io/javascripts/dl-cookies.js"></script>
+	<script async src='https://www.google-analytics.com/analytics.js'></script>
+	<!-- end google analytics -->
+
+	<script src="https://digital-land.github.io/javascripts/govuk/govuk-frontend.min.js"></script>
+	<script>
+		// initiate all GOVUK components
+		window.GOVUKFrontend.initAll();
+	</script>
+
+	<script src="https://digital-land.github.io/javascripts/dl-frontend.js"></script>
+	<script>
+		// adds any necessary polyfills
+		window.DLFrontend.polyfill();
+	</script>
+
+<script>
+    const datasetName = "heritage-at-risk"
+    const $mapElement = document.querySelector('[data-module="boundary-map"]')
+    const $nationalMapLink = document.querySelector('.dl-link-national-map')
+    const mapComponent = new DLMaps.Map($mapElement).init({
+        initGeoJsonLoadCallback: function (urls, featureGroup) {
+            console.log("initial load completed")
+            // do we need to check there isn't more than one shape?
+            const center = featureGroup.getBounds().getCenter()
+            const zoom = mapComponent.map.getZoom()
+            let url = `http://digital-land.github.io/leaflet-spike/?layer=${datasetName}#${center.lat},${center.lng},${zoom}z`
+            console.log(url)
+            if ($nationalMapLink) {
+                // only show this for the datasets we've added to the national map
+                $nationalMapLink.href = url
+                $nationalMapLink.classList.remove("js-hidden")
+            }
+        }
+    })
+</script>
+<script>
+    // Initialise back to top
+    var $data_tables = document.querySelectorAll('[data-module*="data-table"]')
+    $data_tables.forEach(data_table => {
+        new window.DLFrontend.ScrollableTables(data_table).init()
+    })
+</script>
+
+<script>
+    const $subNavTabs = document.querySelector('[data-module="dlf-subnav"]')
+    const subNavTabsComponent = new DLFrontend.SubNavTabs($subNavTabs).init({})
+</script>  </body>
+</html>
