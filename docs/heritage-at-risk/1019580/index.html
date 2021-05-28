@@ -208,9 +208,9 @@ crossorigin="" />
             <th>resource</th>
             <th>line</th>
             <th>geometry</th>
-            <th>documentation-url</th>
-            <th>name</th>
             <th>geography</th>
+            <th>name</th>
+            <th>documentation-url</th>
         </tr>
     </thead>
     <tbody>        <tr>
@@ -229,9 +229,9 @@ crossorigin="" />
   </div>
 </details>
                 </td>
-                <td>https://historicengland.org.uk/advice/heritage-at-risk/search-register/list-entry/33224</td> 
-                <td>Lammerside Castle medieval tower house</td> 
                 <td>heritage-at-risk:1019580</td> 
+                <td>Lammerside Castle medieval tower house</td> 
+                <td>https://historicengland.org.uk/advice/heritage-at-risk/search-register/list-entry/33224</td> 
         </tr>        <tr>
             <td>2021-05-27</td>
             <td><a href="https://github.com/digital-land/heritage-at-risk-collection/tree/main/transformed/heritage-at-risk/d2de307baa7879a3cd2a7ef1f19911e4cc5b5be8937bf28124cd089cc2b1f816.csv#L2745">d2de307baa78...</a></td>
@@ -248,9 +248,9 @@ crossorigin="" />
   </div>
 </details>
                 </td>
-                <td>https://historicengland.org.uk/advice/heritage-at-risk/search-register/list-entry/46338</td> 
-                <td>Lammerside Castle</td> 
                 <td>heritage-at-risk:1019580</td> 
+                <td>Lammerside Castle</td> 
+                <td>https://historicengland.org.uk/advice/heritage-at-risk/search-register/list-entry/46338</td> 
         </tr>    </tbody>
 </table>
 
@@ -365,7 +365,7 @@ crossorigin="" />
             // do we need to check there isn't more than one shape?
             const center = featureGroup.getBounds().getCenter()
             const zoom = mapComponent.map.getZoom()
-            let url = `http://digital-land.github.io/leaflet-spike/?layer=${datasetName}#${center.lat},${center.lng},${zoom}z`
+            let url = `http://digital-land.github.io/map?layer=${datasetName}#${center.lat},${center.lng},${zoom}z`
             console.log(url)
             if ($nationalMapLink) {
                 // only show this for the datasets we've added to the national map

@@ -208,9 +208,9 @@ crossorigin="" />
             <th>resource</th>
             <th>line</th>
             <th>geometry</th>
-            <th>documentation-url</th>
-            <th>name</th>
             <th>geography</th>
+            <th>name</th>
+            <th>documentation-url</th>
         </tr>
     </thead>
     <tbody>        <tr>
@@ -229,9 +229,9 @@ crossorigin="" />
   </div>
 </details>
                 </td>
-                <td>https://historicengland.org.uk/advice/heritage-at-risk/search-register/list-entry/40028</td> 
-                <td>Section of the Abbot&#39;s Way trackway, 500 metres WSW of Honeygar Farm</td> 
                 <td>heritage-at-risk:1014432</td> 
+                <td>Section of the Abbot&#39;s Way trackway, 500 metres WSW of Honeygar Farm</td> 
+                <td>https://historicengland.org.uk/advice/heritage-at-risk/search-register/list-entry/40028</td> 
         </tr>    </tbody>
 </table>
 
@@ -346,7 +346,7 @@ crossorigin="" />
             // do we need to check there isn't more than one shape?
             const center = featureGroup.getBounds().getCenter()
             const zoom = mapComponent.map.getZoom()
-            let url = `http://digital-land.github.io/leaflet-spike/?layer=${datasetName}#${center.lat},${center.lng},${zoom}z`
+            let url = `http://digital-land.github.io/map?layer=${datasetName}#${center.lat},${center.lng},${zoom}z`
             console.log(url)
             if ($nationalMapLink) {
                 // only show this for the datasets we've added to the national map
