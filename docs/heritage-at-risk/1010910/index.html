@@ -208,8 +208,8 @@ crossorigin="" />
             <th>resource</th>
             <th>line</th>
             <th>geometry</th>
-            <th>name</th>
             <th>documentation-url</th>
+            <th>name</th>
             <th>geography</th>
         </tr>
     </thead>
@@ -229,8 +229,8 @@ crossorigin="" />
   </div>
 </details>
                 </td>
-                <td>The coastal fortifications of Drake&#39;s Island</td> 
                 <td>https://historicengland.org.uk/advice/heritage-at-risk/search-register/list-entry/36132</td> 
+                <td>The coastal fortifications of Drake&#39;s Island</td> 
                 <td>heritage-at-risk:1010910</td> 
         </tr>        <tr>
             <td>2021-05-27</td>
@@ -248,8 +248,8 @@ crossorigin="" />
   </div>
 </details>
                 </td>
-                <td>The coastal fortifications of Drake&#39;s Island, Plymouth</td> 
                 <td>https://historicengland.org.uk/advice/heritage-at-risk/search-register/list-entry/49881</td> 
+                <td>The coastal fortifications of Drake&#39;s Island, Plymouth</td> 
                 <td>heritage-at-risk:1010910</td> 
         </tr>    </tbody>
 </table>
@@ -360,7 +360,7 @@ crossorigin="" />
     const $mapElement = document.querySelector('[data-module="boundary-map"]')
     const $nationalMapLink = document.querySelector('.dl-link-national-map')
     const mapComponent = new DLMaps.Map($mapElement).init({
-        initGeoJsonLoadCallback: function (urls, featureGroup) {
+        initZoomCallback: function (featureGroup) {
             console.log("initial load completed")
             // do we need to check there isn't more than one shape?
             const center = featureGroup.getBounds().getCenter()

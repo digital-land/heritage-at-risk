@@ -208,9 +208,9 @@ crossorigin="" />
             <th>resource</th>
             <th>line</th>
             <th>geometry</th>
-            <th>name</th>
             <th>documentation-url</th>
             <th>geography</th>
+            <th>name</th>
         </tr>
     </thead>
     <tbody>        <tr>
@@ -229,9 +229,9 @@ crossorigin="" />
   </div>
 </details>
                 </td>
-                <td>Oldway Mansion</td> 
                 <td>https://historicengland.org.uk/advice/heritage-at-risk/search-register/list-entry/25843</td> 
                 <td>heritage-at-risk:1001368</td> 
+                <td>Oldway Mansion</td> 
         </tr>    </tbody>
 </table>
 
@@ -341,7 +341,7 @@ crossorigin="" />
     const $mapElement = document.querySelector('[data-module="boundary-map"]')
     const $nationalMapLink = document.querySelector('.dl-link-national-map')
     const mapComponent = new DLMaps.Map($mapElement).init({
-        initGeoJsonLoadCallback: function (urls, featureGroup) {
+        initZoomCallback: function (featureGroup) {
             console.log("initial load completed")
             // do we need to check there isn't more than one shape?
             const center = featureGroup.getBounds().getCenter()
